@@ -1,5 +1,5 @@
 /*
-code for wireless commucation of node 1 (motion sensor) 
+code for wireless communication of node 1 (motion sensor) 
 want to add 2 nodes, a motion sensor and a sensor board
 */
 
@@ -208,10 +208,10 @@ while(1)
                         PHYTransmit((char  *)&TxPacket,sizeof(PacketType));                      //Transmit  RF  data packet  
 						if	(Motion==0)
                         sprintf(Text,"Group ID=%u Node ID=%u Voltage_light=%.2f V Temperature=%.2f C Watching~~ RSSI =%u CRCRight=%u \r\n", 
-                                      TxPacket.GID, TxPacket.NID, TxPacket.Data1,TxPacket.Data2,TxPacket.Data3, Strength,CRCRight); 
+                                      TxPacket.GID, TxPacket.NID, TxPacket.Data1,TxPacket.Data2, Strength,CRCRight); 
 						else
 						sprintf(Text,"Group ID=%u Node ID=%u Voltage_light=%.2f V Temperature=%.2f C Motion detected! RSSI =%u CRCRight=%u \r\n", 
-                                      TxPacket.GID, TxPacket.NID, TxPacket.Data1,TxPacket.Data2,TxPacket.Data3, Strength,CRCRight); 
+                                      TxPacket.GID, TxPacket.NID, TxPacket.Data1,TxPacket.Data2, Strength,CRCRight); 
                         USARTOut(Text,strlen(Text));  
                         PORTA = 0x04; 
                         } 
