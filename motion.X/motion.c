@@ -195,10 +195,8 @@ while(1)
          TxPacket.NID = 1;//Node ID 
          TxPacket.Data1 = Light;                                           
          TxPacket.Data2 = Temperature;                                     
-		 if (Motion==0)
-			 TxPacket.Data3=0;									// motion sensor output
-		 else
-			 TxPacket.Data3=1;
+         TxPacket.Data3= Motion;									// motion sensor output
+
          TxPacket.crc = CalculateCRC(&TxPacket,sizeof(TxPacket)-sizeof(TxPacket.crc));     
 //    //--------------------send data wirelessly----------------------- 
      if(INTCONbits.TMR0IF)                                                                                 
@@ -207,11 +205,14 @@ while(1)
                         PORTA = 0x05;                                                                                                                                     
                         PHYTransmit((char  *)&TxPacket,sizeof(PacketType));                      //Transmit  RF  data packet  
 						if	(Motion==0)
-                        sprintf(Text,"Group ID=%u Node ID=%u Voltage_light=%.2f V Temperature=%.2f C Watching~~ RSSI =%u CRCRight=%u \r\n", 
-                                      TxPacket.GID, TxPacket.NID, TxPacket.Data1,TxPacket.Data2, Strength,CRCRight); 
+                        sprintf(Text,"Group ID=%u Node ID=%u Voltage_light=%.2f V Temperature=%.2f C Watching~~%.2f RSSI =%u CRCRight=%u \r\n", 
+                                      TxPacket.GID, TxPacket.NID, TxPacket.Data1,TxPacket.Data2, TxPacket.Data3,Strength,CRCRight); 
 						else
-						sprintf(Text,"Group ID=%u Node ID=%u Voltage_light=%.2f V Temperature=%.2f C Motion detected! RSSI =%u CRCRight=%u \r\n", 
-                                      TxPacket.GID, TxPacket.NID, TxPacket.Data1,TxPacket.Data2, Strength,CRCRight); 
+                        {
+                        TxPacket.Data3=1;
+						sprintf(Text,"Group ID=%u Node ID=%u Voltage_light=%.2f V Temperature=%.2f C Motion detected!%.2f RSSI =%u CRCRight=%u \r\n", 
+                                      TxPacket.GID, TxPacket.NID, TxPacket.Data1,TxPacket.Data2, TxPacket.Data3,Strength,CRCRight); 
+                        }
                         USARTOut(Text,strlen(Text));  
                         PORTA = 0x04; 
                         } 
@@ -228,12 +229,12 @@ while(1)
                        { 
                         case 2:  
                                sprintf(Text,"Group ID=%u Node ID=%u Voltage_light=%.2f V Voltage_temp=%.2f V RSSI =%u CRCRight=%u \r\n", 
-                                                RxPacket.GID,  RxPacket.NID,RxPacket.Data1,  RxPacket.Data2,  Strength, CRCRight); 
+                                                RxPacket.GID,  RxPacket.NID,RxPacket.Data1,  RxPacket.Data2, Strength, CRCRight); 
                                USARTOut(Text,strlen(Text)); 
                                break; 
                         case 3:  
-                               sprintf(Text,"Group ID=%u Node ID=%u Voltage_water=%.2f V RSSI =%u CRCRight=%u \r\n", 
-                                                RxPacket.GID, RxPacket.NID,RxPacket.Data1,Strength, CRCRight); 
+                               sprintf(Text,"Group ID=%u Node ID=%u Moisture=%.2f Temperature=%.2f C Light=%.2f V RSSI =%u CRCRight=%u \r\n", 
+                                                RxPacket.GID, RxPacket.NID,RxPacket.Data1,RxPacket.Data2,RxPacket.Data3,Strength, CRCRight); 
                                USARTOut(Text,strlen(Text)); 
                                break; 
                        } 

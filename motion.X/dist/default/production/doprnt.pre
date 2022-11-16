@@ -358,6 +358,24 @@ continue;
 # 548
 flag = 0;
 
+# 611
+if(*f == '.') {
+flag |= 0x4000;
+f++;
+
+# 620
+{
+prec = 0;
+while(isdigit((unsigned)*f))
+prec = prec*10 + *f++ - '0';
+}
+} else {
+prec = 0;
+
+flag |= 0x1000;
+
+}
+
 # 635
 switch(c = *f++) {
 
@@ -375,13 +393,20 @@ default:
 # 813
 continue;
 
-# 822
+
+
+case 'u':
+flag |= 0xC0;
+break;
+
+
 }
 
 
 if(flag & (0x700)) {
 
-# 829
+if(flag & 0x1000)
+
 prec = 6;
 fval = (*(double *)__va_arg((*(double **)ap), (double)0));
 if(fval < 0.0) {
@@ -491,6 +516,28 @@ prec--;
 continue;
 }
 
+# 1273
+{
+
+# 1286
+val = (*(unsigned *)__va_arg((*(unsigned **)ap), (unsigned)0));
+}
+
+
+if(prec == 0 && val == 0)
+prec++;
+
+# 1305
+for(c = 1 ; c != sizeof dpowers/sizeof dpowers[0] ; c++)
+if(val < dpowers[c])
+break;
+
+# 1339
+if(c < prec)
+c = prec;
+else if(prec < c)
+prec = c;
+
 # 1422
 {
 
@@ -499,6 +546,20 @@ if(flag & 0x03)
 ((*sp++ = ('-')));
 
 # 1469
+}
+
+# 1474
+while(prec--) {
+
+# 1478
+{
+
+# 1489
+c = (val / dpowers[prec]) % 10 + '0';
+
+# 1523
+}
+((*sp++ = (c)));
 }
 
 # 1533

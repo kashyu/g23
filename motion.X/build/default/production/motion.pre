@@ -1,208 +1,15 @@
 
 # 1 "motion.c"
 
+# 26 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\htc.h"
+extern const char __xc8_OPTIM_SPEED;
 
-# 9
-#pragma config OSC = HS
-#pragma config FCMEN = OFF
-#pragma config IESO = OFF
-
-#pragma config PWRT = OFF
-#pragma config BOREN = SBORDIS
-#pragma config BORV = 3
-
-#pragma config WDT = OFF
-#pragma config WDTPS = 32768
-
-#pragma config CCP2MX = PORTC
-#pragma config PBADEN = ON
-#pragma config LPT1OSC = OFF
-#pragma config MCLRE = ON
-
-#pragma config STVREN = ON
-#pragma config LVP = OFF
-#pragma config XINST = OFF
-
-#pragma config CP0 = OFF
-#pragma config CP1 = OFF
-#pragma config CP2 = OFF
-#pragma config CP3 = OFF
-
-#pragma config CPB = OFF
-#pragma config CPD = OFF
-
-#pragma config WRT0 = OFF
-#pragma config WRT1 = OFF
-#pragma config WRT2 = OFF
-#pragma config WRT3 = OFF
-
-#pragma config WRTC = OFF
-#pragma config WRTB = OFF
-#pragma config WRTD = OFF
-
-#pragma config EBTR0 = OFF
-#pragma config EBTR1 = OFF
-#pragma config EBTR2 = OFF
-#pragma config EBTR3 = OFF
-
-#pragma config EBTRB = OFF
-
-# 4 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\__size_t.h"
-typedef unsigned size_t;
-
-# 7 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\stdlib.h"
-typedef unsigned short wchar_t;
-
-# 15
-typedef struct {
-int rem;
-int quot;
-} div_t;
-typedef struct {
-unsigned rem;
-unsigned quot;
-} udiv_t;
-typedef struct {
-long quot;
-long rem;
-} ldiv_t;
-typedef struct {
-unsigned long quot;
-unsigned long rem;
-} uldiv_t;
-
-# 53
-extern double atof(const char *);
-extern double strtod(const char *, const char **);
-extern int atoi(const char *);
-extern unsigned xtoi(const char *);
-extern long atol(const char *);
-extern long strtol(const char *, char **, int);
-
-extern int rand(void);
-extern void srand(unsigned int);
-extern void * calloc(size_t, size_t);
-extern div_t div(int numer, int denom);
-extern udiv_t udiv(unsigned numer, unsigned denom);
-extern ldiv_t ldiv(long numer, long denom);
-extern uldiv_t uldiv(unsigned long numer,unsigned long denom);
-extern unsigned long _lrotl(unsigned long value, unsigned int shift);
-extern unsigned long _lrotr(unsigned long value, unsigned int shift);
-extern unsigned int _rotl(unsigned int value, unsigned int shift);
-extern unsigned int _rotr(unsigned int value, unsigned int shift);
-
-
-
-
-extern void * malloc(size_t);
-extern void free(void *);
-extern void * realloc(void *, size_t);
+extern double __fpnormalize(double);
 
 
 # 13 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\xc8debug.h"
 #pragma intrinsic(__builtin_software_breakpoint)
 extern void __builtin_software_breakpoint(void);
-
-# 86 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\stdlib.h"
-extern int atexit(void (*)(void));
-extern char * getenv(const char *);
-extern char ** environ;
-extern int system(char *);
-extern void qsort(void *, size_t, size_t, int (*)(const void *, const void *));
-extern void * bsearch(const void *, void *, size_t, size_t, int(*)(const void *, const void *));
-extern int abs(int);
-extern long labs(long);
-
-extern char * itoa(char * buf, int val, int base);
-extern char * utoa(char * buf, unsigned val, int base);
-
-
-
-
-extern char * ltoa(char * buf, long val, int base);
-extern char * ultoa(char * buf, unsigned long val, int base);
-
-extern char * ftoa(float f, int * status);
-
-# 7 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\stdarg.h"
-typedef void * va_list[1];
-
-#pragma intrinsic(__va_start)
-extern void * __va_start(void);
-
-#pragma intrinsic(__va_arg)
-extern void * __va_arg(void *, ...);
-
-# 43 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\stdio.h"
-struct __prbuf
-{
-char * ptr;
-void (* func)(char);
-};
-
-# 25 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\errno.h"
-extern int errno;
-
-# 12 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\conio.h"
-extern void init_uart(void);
-
-extern char getch(void);
-extern char getche(void);
-extern void putch(char);
-extern void ungetch(char);
-
-extern __bit kbhit(void);
-
-# 23
-extern char * cgets(char *);
-extern void cputs(const char *);
-
-# 88 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\stdio.h"
-extern int cprintf(char *, ...);
-#pragma printf_check(cprintf)
-
-
-
-extern int _doprnt(struct __prbuf *, const register char *, register va_list);
-
-
-# 180
-#pragma printf_check(vprintf) const
-#pragma printf_check(vsprintf) const
-
-extern char * gets(char *);
-extern int puts(const char *);
-extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
-extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
-extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
-extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
-extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
-extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
-
-#pragma printf_check(printf) const
-#pragma printf_check(sprintf) const
-extern int sprintf(char *, const char *, ...);
-extern int printf(const char *, ...);
-
-# 13 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\plib\delays.h"
-void Delay1TCYx(unsigned char);
-
-# 19
-void Delay10TCYx(unsigned char);
-
-# 25
-void Delay100TCYx(unsigned char);
-
-# 31
-void Delay1KTCYx(unsigned char);
-
-# 37
-void Delay10KTCYx(unsigned char);
-
-# 26 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\htc.h"
-extern const char __xc8_OPTIM_SPEED;
-
-extern double __fpnormalize(double);
 
 # 49 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic18f4620.h"
 extern volatile unsigned char PORTA @ 0xF80;
@@ -4343,6 +4150,9 @@ void Busy_eep ( void );
 unsigned char Read_b_eep( unsigned int badd );
 void Write_b_eep( unsigned int badd, unsigned char bdat );
 
+# 4 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\__size_t.h"
+typedef unsigned size_t;
+
 # 6 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\stddef.h"
 typedef int ptrdiff_t;
 
@@ -4979,6 +4789,21 @@ extern void DelayFor18TCY(void);
 extern void DelayPORXLCD(void);
 extern void DelayXLCD(void);
 
+# 13 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\plib\delays.h"
+void Delay1TCYx(unsigned char);
+
+# 19
+void Delay10TCYx(unsigned char);
+
+# 25
+void Delay100TCYx(unsigned char);
+
+# 31
+void Delay1KTCYx(unsigned char);
+
+# 37
+void Delay10KTCYx(unsigned char);
+
 # 18 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic18.h"
 __attribute__((__unsupported__("The " "flash_write" " routine is no longer supported. Please use the MPLAB X MCC."))) void flash_write(const unsigned char *, unsigned int, __far unsigned char *);
 __attribute__((__unsupported__("The " "EraseFlash" " routine is no longer supported. Please use the MPLAB X MCC."))) void EraseFlash(unsigned long startaddr, unsigned long endaddr);
@@ -5001,6 +4826,191 @@ extern __nonreentrant void _delay(unsigned long);
 extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
+
+
+# 9 "motion.c"
+#pragma config OSC = HS
+#pragma config FCMEN = OFF
+#pragma config IESO = OFF
+
+
+#pragma config PWRT = OFF
+#pragma config BOREN = SBORDIS
+#pragma config BORV = 3
+
+
+#pragma config WDT = OFF
+#pragma config WDTPS = 32768
+
+
+#pragma config CCP2MX = PORTC
+#pragma config PBADEN = ON
+#pragma config LPT1OSC = OFF
+#pragma config MCLRE = ON
+
+
+#pragma config STVREN = ON
+#pragma config LVP = OFF
+#pragma config XINST = OFF
+
+
+#pragma config CP0 = OFF
+#pragma config CP1 = OFF
+#pragma config CP2 = OFF
+#pragma config CP3 = OFF
+
+
+#pragma config CPB = OFF
+#pragma config CPD = OFF
+
+
+#pragma config WRT0 = OFF
+#pragma config WRT1 = OFF
+#pragma config WRT2 = OFF
+#pragma config WRT3 = OFF
+
+
+#pragma config WRTC = OFF
+#pragma config WRTB = OFF
+#pragma config WRTD = OFF
+
+
+#pragma config EBTR0 = OFF
+#pragma config EBTR1 = OFF
+#pragma config EBTR2 = OFF
+#pragma config EBTR3 = OFF
+
+
+#pragma config EBTRB = OFF
+
+# 7 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\stdlib.h"
+typedef unsigned short wchar_t;
+
+# 15
+typedef struct {
+int rem;
+int quot;
+} div_t;
+typedef struct {
+unsigned rem;
+unsigned quot;
+} udiv_t;
+typedef struct {
+long quot;
+long rem;
+} ldiv_t;
+typedef struct {
+unsigned long quot;
+unsigned long rem;
+} uldiv_t;
+
+# 53
+extern double atof(const char *);
+extern double strtod(const char *, const char **);
+extern int atoi(const char *);
+extern unsigned xtoi(const char *);
+extern long atol(const char *);
+extern long strtol(const char *, char **, int);
+
+extern int rand(void);
+extern void srand(unsigned int);
+extern void * calloc(size_t, size_t);
+extern div_t div(int numer, int denom);
+extern udiv_t udiv(unsigned numer, unsigned denom);
+extern ldiv_t ldiv(long numer, long denom);
+extern uldiv_t uldiv(unsigned long numer,unsigned long denom);
+extern unsigned long _lrotl(unsigned long value, unsigned int shift);
+extern unsigned long _lrotr(unsigned long value, unsigned int shift);
+extern unsigned int _rotl(unsigned int value, unsigned int shift);
+extern unsigned int _rotr(unsigned int value, unsigned int shift);
+
+
+
+
+extern void * malloc(size_t);
+extern void free(void *);
+extern void * realloc(void *, size_t);
+
+# 86
+extern int atexit(void (*)(void));
+extern char * getenv(const char *);
+extern char ** environ;
+extern int system(char *);
+extern void qsort(void *, size_t, size_t, int (*)(const void *, const void *));
+extern void * bsearch(const void *, void *, size_t, size_t, int(*)(const void *, const void *));
+extern int abs(int);
+extern long labs(long);
+
+extern char * itoa(char * buf, int val, int base);
+extern char * utoa(char * buf, unsigned val, int base);
+
+
+
+
+extern char * ltoa(char * buf, long val, int base);
+extern char * ultoa(char * buf, unsigned long val, int base);
+
+extern char * ftoa(float f, int * status);
+
+# 7 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\stdarg.h"
+typedef void * va_list[1];
+
+#pragma intrinsic(__va_start)
+extern void * __va_start(void);
+
+#pragma intrinsic(__va_arg)
+extern void * __va_arg(void *, ...);
+
+# 43 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\stdio.h"
+struct __prbuf
+{
+char * ptr;
+void (* func)(char);
+};
+
+# 25 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\errno.h"
+extern int errno;
+
+# 12 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\conio.h"
+extern void init_uart(void);
+
+extern char getch(void);
+extern char getche(void);
+extern void putch(char);
+extern void ungetch(char);
+
+extern __bit kbhit(void);
+
+# 23
+extern char * cgets(char *);
+extern void cputs(const char *);
+
+# 88 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\stdio.h"
+extern int cprintf(char *, ...);
+#pragma printf_check(cprintf)
+
+
+
+extern int _doprnt(struct __prbuf *, const register char *, register va_list);
+
+
+# 180
+#pragma printf_check(vprintf) const
+#pragma printf_check(vsprintf) const
+
+extern char * gets(char *);
+extern int puts(const char *);
+extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
+extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
+extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
+extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
+extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
+extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
+
+#pragma printf_check(printf) const
+#pragma printf_check(sprintf) const
+extern int sprintf(char *, const char *, ...);
+extern int printf(const char *, ...);
 
 # 14 "C:\Program Files (x86)\Microchip\xc8\v1.35\include\string.h"
 extern void * memcpy(void *, const void *, size_t);
@@ -5034,40 +5044,314 @@ extern char * strichr(const char *, int);
 extern char * strrchr(const char *, int);
 extern char * strrichr(const char *, int);
 
-# 61 "motion.c"
-void USARTOut (char *data, char bytes)
+# 221 "MRF24J40.h"
+void SetLongRAMAddr(unsigned int address, unsigned char value)
+{
+volatile unsigned char tmpINT0IE = INTCONbits.INT0IE;
+INTCONbits.INT0IE = 0;
+PORTCbits.RC0 = 0;
+WriteSPI((((unsigned char)(address>>3))&0b01111111)|0x80);
+WriteSPI((((unsigned char)(address<<5))&0b11100000)|0x10);
+WriteSPI(value);
+PORTCbits.RC0 = 1;
+INTCONbits.INT0IE = tmpINT0IE;
+}
+
+# 238
+void SetShortRAMAddr(unsigned char address, unsigned char value)
+{
+volatile unsigned char tmpINT0IE = INTCONbits.INT0IE;
+INTCONbits.INT0IE = 0;
+PORTCbits.RC0 = 0;
+WriteSPI(address);
+WriteSPI(value);
+PORTCbits.RC0 = 1;
+INTCONbits.INT0IE = tmpINT0IE;
+}
+
+# 254
+unsigned char GetShortRAMAddr(unsigned char address)
+{
+unsigned char toReturn;
+volatile unsigned char tmpINT0IE = INTCONbits.INT0IE;
+INTCONbits.INT0IE = 0;
+PORTCbits.RC0 = 0;
+WriteSPI(address);
+toReturn = ReadSPI();
+PORTCbits.RC0 = 1;
+INTCONbits.INT0IE = tmpINT0IE;
+return toReturn;
+}
+
+# 273
+unsigned char GetLongRAMAddr(unsigned int address)
+{
+unsigned char toReturn;
+volatile unsigned char tmpINT0IE = INTCONbits.INT0IE;
+INTCONbits.INT0IE = 0;
+PORTCbits.RC0 = 0;
+WriteSPI(((address>>3)&0b01111111)|0x80);
+WriteSPI(((address<<5)&0b11100000));
+toReturn = ReadSPI();
+PORTCbits.RC0 = 1;
+INTCONbits.INT0IE = tmpINT0IE;
+return toReturn;
+}
+
+# 293
+void SetChannel(unsigned char channel)
+{
+SetLongRAMAddr((0x200), (channel | 0x02));
+SetShortRAMAddr((0x6D),0x04);
+SetShortRAMAddr((0x6D),0x00);
+}
+
+# 304
+void MRF24J40Init(void)
+{
+unsigned char i;
+unsigned int j;
+
+PORTCbits.RC2 = 0;
+for(j=0;j<300;j++);
+PORTCbits.RC2 = 1;
+for(j=0;j<300;j++);
+
+SetShortRAMAddr((0x6D),0x04);
+SetShortRAMAddr((0x6D),0x00);
+SetShortRAMAddr((0x1B),0x05);
+SetShortRAMAddr((0x07),0xFF);
+SetShortRAMAddr((0x09),0xFF);
+SetShortRAMAddr((0x03),0xFF);
+SetShortRAMAddr((0x05),0xFF);
+
+SetLongRAMAddr((0x202),0x80);
+SetLongRAMAddr((0x203),0x00);
+SetLongRAMAddr((0x206),0x80);
+SetLongRAMAddr((0x208),0b00010000);
+SetShortRAMAddr((0x75),0x38);
+SetShortRAMAddr((0x7D),0x40);
+SetShortRAMAddr((0x7F),0x00);
+SetLongRAMAddr((0x200),0x00);
+SetShortRAMAddr((0x01),0x23);
+SetShortRAMAddr((0x6D),0x04);
+SetShortRAMAddr((0x6D),0x00);
+SetShortRAMAddr((0x65),0xF7);
+}
+
+# 340
+void PHYTransmit(char *Data, unsigned char NoBytes)
+{
+unsigned char i;
+SetLongRAMAddr(0,NoBytes+9);
+SetLongRAMAddr(1,NoBytes+9);
+SetLongRAMAddr(2,0x01);
+SetLongRAMAddr(3,0x88);
+SetLongRAMAddr(4,0x01);
+SetLongRAMAddr(5,0xFF);
+SetLongRAMAddr(6,0xFF);
+SetLongRAMAddr(7,0xFF);
+SetLongRAMAddr(8,0xFF);
+SetLongRAMAddr(9,0xFF);
+SetLongRAMAddr(10,0xFF);
+for(i=0; i<NoBytes; i++) SetLongRAMAddr(11+i,Data[i]);
+SetShortRAMAddr((0x37),0b00000001);
+}
+
+# 362
+unsigned char PHYReceive(char *Data, unsigned char *Strength)
+{
+unsigned char NoBytes,i;
+if(GetShortRAMAddr((0x62)) & 0x08)
+{
+NoBytes = GetLongRAMAddr((0x300))-11;
+for(i=0; i<NoBytes; i++) Data[i] = GetLongRAMAddr((0x300)+10+i);
+*Strength = GetLongRAMAddr((0x300)+NoBytes+13);
+SetShortRAMAddr((0x1B),0x01);
+return(NoBytes);
+}
+else return(0);
+}
+
+# 380
+unsigned char PHYGetRSSI(void)
+{
+unsigned char RSSICheck;
+SetShortRAMAddr((0x7D), 0xC0);
+RSSICheck = GetShortRAMAddr((0x7C));
+while((RSSICheck & 0x01) != 0x01 || (RSSICheck & 0x80)) RSSICheck = GetShortRAMAddr((0x7C));
+RSSICheck = GetLongRAMAddr(0x210);
+return(RSSICheck);
+}
+
+# 75 "motion.c"
+void Init_IO(void)
+{
+PORTA = 0x04;
+TRISA = 0xF8;
+TRISB = 0xFF;
+INTCON2bits.RBPU = 0;
+ADCON0 = 0x1C;
+
+PORTCbits.RC0 = 1;
+TRISCbits.TRISC0 = 0;
+PORTCbits.RC1 = 1;
+TRISCbits.TRISC0 = 0;
+PORTCbits.RC2 = 1;
+TRISCbits.TRISC2 = 0;
+
+INTCONbits.INT0IF = 0;
+INTCONbits.INT0IE = 1;
+RCONbits.IPEN = 1;
+INTCONbits.GIEH = 1;
+OSCCONbits.IDLEN = 1;
+OpenUSART(0b01111111 & 0b10111111 & 0b11111110 & 0b11111101 & 0b11111111 & 0b11111111,25 );
+
+OpenSPI(0b00000000,0b00000000,0b00000000);
+}
+
+void USARTOut(char *data, char bytes)
 {
 int i;
-for(i=0;i<bytes;i++)
+for(i=0; i<bytes; i++)
 {
 while((!TXSTAbits.TRMT));
 WriteUSART(data[i]);
 }
 }
 
-void main (void)
+typedef struct
 {
-float ADCresult1;
-char str[];
+unsigned char GID;
+unsigned char NID;
+float Data1, Data2, Data3;
+unsigned int crc;
+}PacketType;
 
-OpenADC( 0b10101111 & 0b11111111 & 0b11111001, 0b10001111 & 0b01111111 & 0b11111100,0);
+PacketType TxPacket,RxPacket;
+char Text[128];
+unsigned int ADCresult1, ADCresult2,ADCresult3, Strength, CRCRight;
+float Light, Temperature, Motion;
 
-
-
-OpenUSART( 0b01111111 & 0b10111111 & 0b11111110 & 0b11111101 & 0b11111111 & 0b11111111,25);
-while(1)
+void ADC(void)
 {
+
+
+OpenADC(0b10101111 & 0b11111111 & 0b11111001,0b10001111 & 0b01111111 & 0b11111100,0);
+Delay10TCYx(5);
+OpenADC(0b10101111 & 0b11111111 & 0b11111001,0b10010111 & 0b01111111 & 0b11111100,0);
+Delay10TCYx(5);
+OpenADC(0b10101111 & 0b11111111 & 0b11111001,0b10011111 & 0b01111111 & 0b11111100,0);
+Delay10TCYx(5);
 
 SetChanADC(0b10001111);
-Delay10KTCYx(5);
 ConvertADC();
 while(BusyADC());
 ADCresult1 = ReadADC();
 
-sprintf(str, "%f ", ADCresult1);
-USARTOut(str,strlen(str));
+SetChanADC(0b10010111);
+ConvertADC();
+while(BusyADC());
+ADCresult2 = ReadADC();
 
-# 101
-Delay10KTCYx(50);
+SetChanADC(0b10011111);
+ConvertADC();
+while(BusyADC());
+ADCresult3 = ReadADC();
+}
+
+const unsigned char code_Table[256]={
+0x00,0x07,0x0E,0x09,0x1C,0x1B,0x12,0x15,0x38,0x3F,0x36,0x31,0x24,0x23,0x2A,0x2D,
+0x70,0x77,0x7E,0x79,0x6C,0x6B,0x62,0x65,0x48,0x4F,0x46,0x41,0x54,0x53,0x5A,0x5D,
+0xE0,0xE7,0xEE,0xE9,0xFC,0xFB,0xF2,0xF5,0xD8,0xDF,0xD6,0xD1,0xC4,0xC3,0xCA,0xCD,
+0x90,0x97,0x9E,0x99,0x8C,0x8B,0x82,0x85,0xA8,0xAF,0xA6,0xA1,0xB4,0xB3,0xBA,0xBD,
+0xC7,0xC1,0xC9,0xCE,0xDB,0xDC,0xD5,0xD2,0xFF,0xF8,0xF1,0xF6,0xE3,0xE4,0xED,0xEA,
+0xB7,0xB0,0xB9,0xBE,0xAB,0xAC,0xA5,0xA2,0x8F,0x88,0x81,0x86,0x93,0x94,0x9D,0x9A,
+0x27,0x20,0x29,0x2E,0x3B,0x3C,0x35,0x32,0x1F,0x18,0x11,0x16,0x03,0x04,0x0D,0x0A,
+0x57,0x50,0x59,0x5E,0x4B,0x4C,0x45,0x42,0x6F,0x68,0x61,0x66,0x73,0x74,0x7D,0x7A,
+0x89,0x8E,0x87,0x80,0x95,0x93,0x9B,0x9C,0xB1,0xB6,0xBF,0xB8,0xAD,0xAA,0xA3,0xA4,
+0xF9,0xFE,0xF7,0xF0,0xE5,0xE3,0xEB,0xEC,0xC1,0xC6,0xCF,0xC8,0xDD,0xDA,0xD3,0xD4,
+0x69,0x6E,0x67,0x60,0x75,0x73,0x7B,0x7C,0x51,0x56,0x5F,0x58,0x4D,0x4A,0x43,0x44,
+0x19,0x1E,0x17,0x10,0x05,0x03,0x0B,0x0C,0x21,0x26,0x2F,0x28,0x3D,0x3A,0x33,0x34,
+0x4E,0x49,0x40,0x47,0x52,0x55,0x5C,0x5B,0x76,0x71,0x78,0x7F,0x6A,0x6D,0x64,0x62,
+0x3E,0x39,0x30,0x37,0x22,0x25,0x2C,0x2B,0x06,0x01,0x08,0x0F,0x1A,0x1D,0x14,0x12,
+0xAE,0xA9,0xA0,0xA7,0xB2,0xB5,0xBC,0xBB,0x96,0x91,0x98,0x9F,0x8A,0x8D,0x84,0x82,
+0xDE,0xD9,0xD0,0xD7,0xC2,0xC5,0xCC,0xCB,0xE6,0xE1,0xE8,0xEF,0xFA,0xFD,0xF4,0xF2
+};
+
+
+unsigned char CalculateCRC(unsigned char* message, unsigned char length)
+{
+unsigned char i, crc = 0;
+for (i = 0; i < length; i++)
+crc = code_Table[crc ^ message[i]];
+return crc;
+}
+
+void main (void)
+{
+Init_IO();
+MRF24J40Init();
+
+SetChannel(0x60);
+
+OpenTimer0( 0b11111111 & 0b10111111 & 0b11011111 & 0b11110011);
+
+WriteTimer0(3036);
+while(1)
+{
+ADC();
+Light=(float)ADCresult1*3.2/1023;
+Temperature=-25.445*(float)ADCresult2*3.2/1023+73.169;
+Motion=(float)ADCresult3;
+TxPacket.GID = 23;
+TxPacket.NID = 1;
+TxPacket.Data1 = Light;
+TxPacket.Data2 = Temperature;
+TxPacket.Data3= Motion;
+
+TxPacket.crc = CalculateCRC(&TxPacket,sizeof(TxPacket)-sizeof(TxPacket.crc));
+
+if(INTCONbits.TMR0IF)
+{
+INTCONbits.TMR0IF = 0;
+PORTA = 0x05;
+PHYTransmit((char *)&TxPacket,sizeof(PacketType));
+if (Motion==0)
+sprintf(Text,"Group ID=%u Node ID=%u Voltage_light=%.2f V Temperature=%.2f C Watching~~%.2f RSSI =%u CRCRight=%u \r\n",
+TxPacket.GID, TxPacket.NID, TxPacket.Data1,TxPacket.Data2, TxPacket.Data3,Strength,CRCRight);
+else
+{
+TxPacket.Data3=1;
+sprintf(Text,"Group ID=%u Node ID=%u Voltage_light=%.2f V Temperature=%.2f C Motion detected!%.2f RSSI =%u CRCRight=%u \r\n",
+TxPacket.GID, TxPacket.NID, TxPacket.Data1,TxPacket.Data2, TxPacket.Data3,Strength,CRCRight);
+}
+USARTOut(Text,strlen(Text));
+PORTA = 0x04;
+}
+
+if( PHYReceive((char *)&RxPacket,&Strength) == sizeof(PacketType))
+
+{
+PORTA = 0x06;
+if (0 == CalculateCRC(&RxPacket,sizeof(PacketType)))
+CRCRight = 1;
+else
+CRCRight = 0;
+switch(RxPacket.NID)
+{
+case 2:
+sprintf(Text,"Group ID=%u Node ID=%u Voltage_light=%.2f V Voltage_temp=%.2f V RSSI =%u CRCRight=%u \r\n",
+RxPacket.GID, RxPacket.NID,RxPacket.Data1, RxPacket.Data2, Strength, CRCRight);
+USARTOut(Text,strlen(Text));
+break;
+case 3:
+sprintf(Text,"Group ID=%u Node ID=%u Moisture=%.2f Temperature=%.2f C Light=%.2f V RSSI =%u CRCRight=%u \r\n",
+RxPacket.GID, RxPacket.NID,RxPacket.Data1,RxPacket.Data2,RxPacket.Data3,Strength, CRCRight);
+USARTOut(Text,strlen(Text));
+break;
+}
+PORTA = 0x04;
+}
 }
 }
