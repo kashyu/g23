@@ -1,2 +1,2 @@
-# g23
+# group 23
 # channel 17
